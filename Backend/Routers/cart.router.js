@@ -7,9 +7,14 @@ const CartRouter=express.Router();
 CartRouter.use(cartAuthenticate)
 
 CartRouter.get("/", async(req,res)=>{
-    const title=req.query.title;
+    const query=req.query;
     try {
-        const product= await cartDataModel.find({title:{'$regex' : title, '$options' : 'i'}});
+        // if(req.query.)
+        const userId=req.body.userId;
+        console.log(userId)
+        console.log(query)
+        const product= await cartDataModel.find({userId:userId});
+        // const product= await cartDataModel.find({title:{'$regex' : title, '$options' : 'i'}});
         res.send(product)
     } catch (error) {
         res.send({"get_msg":error})

@@ -11,7 +11,7 @@ const cartDataSchema=mongoose.Schema({
     "rating":Number,
     "size":[],
     "stock":Boolean,
-    // "adminId":String,
+    "adminId":String,
     "userId":String
 })
 const cartDataModel=mongoose.model("cartData",cartDataSchema);

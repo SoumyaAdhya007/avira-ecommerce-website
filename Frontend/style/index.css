@@ -241,7 +241,7 @@ footer p {
     margin: auto;
 }
 #jacket-btn-div button{
-   
+   margin-top: 20px;
     font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
     padding: 10px 25px;
     background-color: black;
@@ -264,7 +264,7 @@ scroll-behavior: smooth;
 transition:0.5s;
 }
 .section3 #img-card{
-width:25%;
+width:30%;
 /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
 display:inline-block;
 margin:16px;
@@ -339,7 +339,7 @@ left:30px;
 #get-rewards-div{
     width: 50%;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 70px;
 
 }
 #get-rewards-div>div:nth-child(1){
@@ -378,3 +378,147 @@ left:30px;
     /* display: inline-block; */
     width: 100%;
 }
+
+/* features image div  */
+#feat-div{
+    width: 80%;
+    margin: auto;
+    margin-top: 90px;
+}
+#feat-child-div{
+    margin-top: 15px;
+    width: 100%;
+}
+.feat-img-I{
+    height: 450px;
+    width: 100%;
+    background: url(../img/features-pc-img-1.jpg);
+    background-size: 100% 100%;
+}
+.feat-img-I h2{
+    font-family: "gert bold", sans-serif;
+
+    padding-top: 406px;
+    padding-left: 10px;
+    color: white;
+}
+.feat-img-I p{
+    color: white;
+    text-decoration: underline;
+    padding-left: 10px;
+
+}
+.feat-img-II-child-div{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 20px;
+}
+.feat-img-II{
+    height: 450px;
+    width: 100%;
+    background: url(../img/features-pc-img-2.jpg);
+    background-size: 100% 100%;
+}
+.feat-img-III{
+    height: 450px;
+    width: 100%;
+    background: url(../img/features-pc-img-3.jpg);
+    background-size: 100% 100%;
+}
+.feat-img-II h2{
+    font-family: "gert bold", sans-serif;
+
+    padding-top: 406px;
+    padding-left: 10px;
+    color: white;
+}
+.feat-img-II p{
+    color: white;
+    text-decoration: underline;
+    padding-left: 10px;
+
+}
+.feat-img-III h2{
+    font-family: "gert bold", sans-serif;
+
+    padding-top: 406px;
+    padding-left: 10px;
+    color: white;
+}
+.feat-img-III p{
+    color: white;
+    text-decoration: underline;
+    padding-left: 10px;
+
+}
+
+/* play section  */
+#play-div{
+    width: 80%;
+    margin: auto;
+    margin-top: 70px;
+}
+.play-child-div{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.fishing{
+    height: 230px;
+
+    background: url(../img/fising-img.jpg);
+    background-size: 100% 100%;
+}
+.hiking{
+    height: 230px;
+
+    background: url(../img/hiking-img.jpg);
+    background-size: 100% 100%;
+}
+.hunting{
+    height: 230px;
+
+    background: url(../img/hunting-img.jpg);
+    background-size: 100% 100%;
+}
+.ski-snow{
+    height: 230px;
+
+    background: url(../img/ski-snow-img.jpg);
+    background-size: 100% 100%;
+}
+.play-child-div h3{
+    font-family: "gert bold", sans-serif;
+    color: white;
+    padding-top: 200px;
+    padding-left: 15px;
+}
+
+
+/* motivate-cort-div  */
+#motivate-cort-div{
+    width: 50%;
+    margin: auto;
+    margin-top: 70px;
+}
+#motivate-cort-div>h1{
+    text-align: center;
+   font-family: "gert bold", sans-serif;
+   font-size: 50px;
+   font-weight: 700;
+   color: #0085ca;
+   line-height: 48px;
+   margin-bottom: 25px;
+}
+#motivate-cort-div p{
+    margin-top: 10px;
+    text-align: center;
+   font-family: "gert bold", sans-serif;
+    font-weight: bold;
+
+}
+
+
