@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./style/shop.css">
+
+<body>
+    <div class="top-header-div">
+        <h1 class="page-header">Men Shirts</h1>
+        <select name="filter" id="filter">
+            <option value="all">SORT BY</option>
+            <option value="top">Top Rated</option>
+            <option value="acd">Price: High to Low</option>
+            <option value="acd">Price: Low to High</option>
+            <option value="acd">Best Sellers</option>
+        </select>
+    </div>
+    <div class="shop-page">
+        <!-- desktop fiter  -->
+        <div class="shop-filter-desktop">
+            <div class="size-range">
+                <h3>Size Range</h3>
+                <div>
+                    <input value="standard" type="checkbox" class="size-checkbox" name="size-range"
+                        onclick="sizeRange(this)"><label for="">Standard</label>
+                </div>
+                <div>
+                    <input value="big" type="checkbox" class="size-checkbox" name="size-range"
+                        onclick="sizeRange(this)"><label for="">Big</label>
+                </div>
+                <div>
+                    <input value="tall" type="checkbox" class="size-checkbox" name="size-range"
+                        onclick="sizeRange(this)"><label for="">Tall</label>
+                </div>
+            </div>
+            <h3>Size</h3>
+            <hr>
+            <div class="size">
+                <button>XXS</button>
+                <button>XS</button>
+                <button>S</button>
+                <button>M</button>
+                <button>L</button>
+                <button>XL</button>
+                <button>XXL</button>
+            </div>
+            <hr>
+            <div class="price">
+                <h3>Price</h3>
+                <div>
+                    <input type="radio" value="500" name="price" onclick="price(this)"><label for="">Under
+                        &#8377;500</label>
+                </div>
+                <div>
+                    <input type="radio" value="1000" name="price" onclick="price(this)"><label
+                        for="">&#8377;500-&#8377;1000</label>
+                </div>
+                <div>
+                    <input type="radio" value="1500" name="price" onclick="price(this)"><label
+                        for="">&#8377;1000-&#8377;1500</label>
+                </div>
+                <div>
+                    <input type="radio" value="2000" name="price" onclick="price(this)"><label for="">Above 2000</label>
+                </div>
+            </div>
+            <hr>
+            <div class="size-range">
+                <h3>Sleeve Length</h3>
+                <div>
+                    <input type="checkbox" class="size-checkbox" name="size-range"><label for="">Long Sleeve</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox" name="size-range"><label for="">Short Sleeve</label>
+                </div>
+            </div>
+            <hr>
+            <div class="size-range">
+                <h3>Benefit</h3>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Water Resistant </label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Warmth</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Wicking </label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Sun Protection</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Cooling</label>
+                </div>
+            </div>
+            <div class="size-range">
+                <h3>Activity</h3>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Hiking</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Fishing</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Water</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="size-checkbox"><label for="">Hunting</label>
+                </div>
+            </div>
+        </div>
+        <div class="shop-items">
+            <div class="shop-items-child-div">
+                <div>
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20220705/eLhp/62c358e6aeb26921af606f2d/-473Wx593H-464586933-wine-MODEL.jpg"
+                        alt="" onmouseover="changeImg(hello,1,this)"
+                        onmouseout="changeImg(bye,2,this)"
+                        >
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="./script/shop.js"></script>
+
+</html>

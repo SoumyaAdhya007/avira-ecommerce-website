@@ -2,66 +2,124 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: "gert bold", sans-serif;
+    box-sizing: border-box;
 }
-#product-div{
+.container{
+    /* display: flex;
+    justify-content: space-between; */
+    margin: auto;
+    width: 90%;
+}
+.wraper{
+    width: 100%;
+    height: 100vh;
+    margin: auto;
     display: flex;
-    margin: auto;
-    width: 80%;
+    /* align-items: center; */
+    justify-content: space-evenly;
 }
-.section3{
-    margin: auto;
-    width:40%;
-/* display: flex; */
-/* flex-direction: column; */
+.text{
+    flex-basis: 45%;
 
-overflow-x:hidden;
-white-space: nowrap;
-overflow-y:hidden;
-scrollbar-width:none;
-scroll-behavior: smooth;
-transition:0.5s;
 }
-.section3 #img-card{
-width:30%;
-/* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-display:inline-block;
-margin:16px;
+.all-images{
+    height: 100vh;
+    display: flex;
 }
-.section3 #img-card img{
-width:100%;
-height:100%;
+.small-images{
+    display: flex;
+    flex-direction: column;
+}
+.small-images img{
+    opacity: 75%;
+    height: 19vh;
+    margin-bottom: 9px;
+    cursor: pointer;
+
 }
 
-.section3 #img-card h1{
-text-align:center;
-padding-left:10px;
+.small-images img:hover{
+    opacity: 1;
 }
+.main-images img{
+    height: 90%;
 
-.section3 .fa-angle-right{
-position:absolute;
-margin-top:15%;
-right:80px;
-/* background:#000;
-padding:20px;
-border-radius:50%;
-color:#fff; */
 }
-.section3 .fa-angle-left{
-position:absolute;
-margin-top:15%;
-left:80px;
-/* background:#000;
-padding:20px;
-border-radius:50%;
-color:#fff; */
+.wraper p{
+    margin-bottom: 20px;
 }
-.section3 .angles{
-opacity:0.7;
-transition:0.5s;
+.wraper h2{
+    font-size: 35px;
+    color: rgb(17, 17, 17);
+    margin-bottom: 20px;
 }
-.section3 .fa-angle-left:hover{
-opacity:1;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+.select-text{
+    font-size: 19px;
+    margin-top: 15px;
+}
+.review{
+    /* background-color: #008000; */
+    display: inline-block;
+    color: #fff;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 15px;
+
+}
+.review .fa{
+    counter-reset: #fff;
+}
+.price-box{
+    display: flex;
+}
+.price{
+    color: rgb(29, 28, 28);
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+strike{
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.price-boc{
+    display: flex;
+    align-items: center;
+
+}
+select{
+    border: 1px solid rgb(54, 52, 52);
+    width: 90%;
+    padding: 8px;
+    border:1px solid #ccc;
+    font-size: 18px;
+
+    font-weight: bold;
+    text-align: center;
+}
+option{
+    outline: 5px solid red;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+button{
+    width: 90%;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: rgb(29, 28, 28);
+
+}
+button .fa{
+    margin-right:10px ;
 }
 .klarna-log-div{
     display: flex;
@@ -71,15 +129,16 @@ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 .klarna-log-child-div{
     border-radius:5px;
     background-color: #ed85a8;
-    height: 42px;
-    width: 19%;
+    height: 37px;
+    padding: 5px;
+    width: 13%;
     margin-right: 25px;
     /* padding-top: 5px; */
 }
-.klarna-log-child-div img{
-    height:42%;
-    width: 80%;
-    padding:10px 10px 10px 5px;
+.klarna-log-child-div div{
+    background: url("../img/karlna-img-log.png");
+    background-size: 100% 100%;
+    padding:10px 10px ;
 }
 .klarna-log-div p{
     font-size: 15px;
@@ -89,23 +148,115 @@ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     text-decoration: underline;
     opacity: 80%;
 }
-@media (max-width:600px){
-.section3 #img-card{
-width:90%;
+.sale{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+.sale .fa-tag{
+    font-size: 26px;
+    color: rgb(139, 14, 14);
+    margin-right: 10px;
+}
+.sale p{
+    font-size: 20px;
+    font-weight: bold;
+    /* color: rgb(139, 14, 14); */
+}
+#details{
+    margin-top: 20px;
+}
+#details p,#details h3{
+    padding: 3px;
+    /* opacity: 0.8; */
+    color: rgb(44, 42, 42);
+}
+#details li{
+    margin-left: 40px;
+    padding: 3px;
+}
+.dropbtn {
+    background-color: white;
+    /* color: white; */
+    padding: 10px 16px 11px 16px;
+    font-size: 16px;
+    border: none;
+   /* font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol"; */
 
 }
-.section3 #img-card img{
-width:100%;
-}
-.section3 .fa-angle-double-right{
-position:absolute;
-margin-top:50%;
-right:30px;
-}
-.section3 .fa-angle-double-left{
-position:absolute;
-margin-top:50%;
-left:30px;
+
+.dropdown-btn {
+
+    position: relative;
+    display: inline-block;
 
 }
+
+.dropdown-content-btn {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    padding: 10px 17px 11px 17px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content-btn h3 {
+    color: black;
+    padding: 10px 17px 11px 17px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.5s;
+   
+
+
+}
+.dropdown-content-btn h3:hover {
+    background-color: #ddd;
+   font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
+}
+
+.dropdown-btn:hover .dropdown-content-btn {
+    display: block;
+}
+.dropdown-btn:hover .dropbtn {
+    background-color: white;
+}
+@media only screen and (max-width:1200px){
+.wraper{
+    flex-direction: column;
+    height: auto;
+    padding: 5% 0;
+    margin-left: 5%;
+
+}
+.text{
+    padding-top: 50px;
+}
+
+}
+@media only screen and (max-width:600px){
+    .all-images{
+        flex-direction: column;
+        height: auto;
+    }
+    .small-images{
+        flex-direction: row;
+        justify-content: space-evenly;
+        order: 1;
+    }
+    .product-box{
+        width: 100%;
+    }
+    .main-images img{
+        width: 100%;
+    }
+    .small-images img{
+        width: 25%;
+    }
+    .wraper h2{
+        font-size: 25px;
+        text-align:justify;
+    }
+    
 }
