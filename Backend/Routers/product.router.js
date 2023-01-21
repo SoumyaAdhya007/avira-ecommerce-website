@@ -65,8 +65,8 @@ ProductRouter.get("/", async (req, res) => {
 
         const rating=req.query.rating;
 
-        if(rating!==undefined && category !== undefined){
-            const data = await ProductModel.find({ category: category }).sort({ price: -1 })
+        if(rating==="top" && category !== undefined){
+            const data = await ProductModel.find({ category: category }).sort({ rating: -1 })
             res.send(data)
         }
     }catch (error) {
