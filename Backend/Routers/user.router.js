@@ -13,7 +13,7 @@ UserRouter.post("/register",async (req,res)=>{
     try {
         const check_register= await UserModel.find({email});
         if(check_register.length>0){
-            res.send("You are already register")
+            res.send({"msg":"You are already registered ","register":"false"})
         }else{
             bcrypt.hash(password,soltRounds, async(err,hash_pass)=>{
                 if(err){
@@ -29,7 +29,7 @@ UserRouter.post("/register",async (req,res)=>{
                         gender
                     });
                     await user.save();
-                    res.send("Register")
+                    res.send({"msg":"Register Successfully","register":"true"})
                     console.log(process.env.soltRounds)
                 }
             })

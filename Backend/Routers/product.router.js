@@ -1,105 +1,117 @@
 const express = require("express");
 const { ProductModel } = require("../Models/products.model");
 const { authenticate } = require("../Middelwares/admin.authentication.middelwres");
-const { query } = require("express");
+// const { query } = require("express");
 
-const app = express();
+// const app = express();
 const ProductRouter = express.Router();
 
 ProductRouter.get("/", async (req, res) => {
     try {
-        const category = req.query.category;
-        const price = req.query.price;
-      
-        // price query
-
-        if (price <= 500 && category != undefined) {
-            console.log(500)
-            const data = await ProductModel.find({ category: req.query.category})
+        const sizerange = req.query.sizerange;
+        // const category = req.query.category;
+        // const product_category=req.query.product
+        let id = req.query.id;
+       if (id != undefined) {
+            let data = await ProductModel.find({ "_id": id });
             res.send(data)
         }
-        else if (price <= 1000 && category != undefined) {
-            console.log(1000)
-            console.log(req.query.category)
-
-            const data = await ProductModel.find({ category: req.query.category, price: { $gte: 601, $lte: 1000 } })
+        else if(sizerange!=undefined){
+            let data = await ProductModel.find({"size-rage":sizerange});
             res.send(data)
+        }else{
+              let data = await ProductModel.find({});
+              res.send(data)
         }
-        else if (price <= 1500 && category != undefined) {
-            console.log(1000)
-            console.log(req.query.category)
-
-            const data = await ProductModel.find({ category: req.query.category, price: { $gte: 1001, $lte: 1500 } })
-            res.send(data)
-        }
-        else if (price >= 2000 && category != undefined) {
-            console.log(2000)
-
-            const data = await ProductModel.find({ category: req.query.category, price: { $gte: 2000 } })
-            res.send(data)
-        }
-
-        // price low to high query 
-        else if (price === "acd" && category != undefined) {
-            console.log("low to high")
-
-            const data = await ProductModel.find({ category: category }).sort({ price: 1 })
-            res.send(data)
-        }
-        // price Hifg to low query 
-
-        else if (price === "dcd" && category != undefined) {
-            console.log("low to high")
-
-            const data = await ProductModel.find({ category: category }).sort({ price: -1 })
-            res.send(data)
-        }
-
-        const searchTerm = req.query.title;
-
-     if (searchTerm !== undefined && category !== undefined) {
-            
-                const data = await ProductModel.find({ category: category, title: { $regex: new RegExp(searchTerm, "i") } }).exec();
-                res.send(data);
-        }
-
-        const rating=req.query.rating;
-
-        if(rating==="top" && category !== undefined){
-            const data = await ProductModel.find({ category: category }).sort({ rating: -1 })
-            res.send(data)
-        }
-
-        else if(category!=undefined){
-            const data=await ProductModel.find({category})
-            res.send(data)
-        }
-        let id=req.query.id;
-        if(id!=undefined){
-            let data= await ProductModel.find({_id:id});
-            res.send(data)
-        }
-        else{
-            let data= await ProductModel.find();
-            res.send(data)
-        }
-    }catch (error) {
+    } catch (error) {
         res.send({ "get_msg": error })
+    }
+})
+ProductRouter.get("/search", async (req,res) => {
+    try {
+        const searchTerm = req.query.title;
+        const data = await ProductModel.find({ title: { $regex: new RegExp(searchTerm, "i") } });
+        res.send(data);
+
+
+    } catch (error) {
+        res.send({ "msg": error })
     }
 })
 
 
+ProductRouter.get("/price", async (req,res) => {
+    try {
+        const priceQ = req.query.price;
+        if (priceQ <= 500) {
+            const data = await ProductModel.find({ price: { $lte: 500 } })
+            res.send(data)
+        }
+         else if (priceQ <= 1000) {
+            const data = await ProductModel.find({ price: { $gte: 501, $lte: 1000 }})
+            res.send(data)
+        }
+         else if (priceQ <= 1500) {
+            const data = await ProductModel.find({ price: { $gte: 1001, $lte: 1500 }})
+            res.send(data)
+        }
+         else if (priceQ >=2000) {
+            const data = await ProductModel.find({ price: { $gte: 2000}})
+            res.send(data)
+        }
+        else if (priceQ === "dcd") {
+            const data = await ProductModel.find().sort({ price: -1 })
+            res.send(data)
+        }
+        else if (priceQ === "acd") {
+            const data = await ProductModel.find().sort({ price: 1 })
+            res.send(data)
+        }
+
+
+    } catch (error) {
+        res.send({ "msg": error })
+    }
+})
+ProductRouter.get("/rating", async (req,res) => {
+    try {
+        let rating = req.query.rating;
+        if (rating === "top") {
+            const data = await ProductModel.find().sort({ rating: -1 })
+            res.send(data)
+        } 
+        // else {
+        //     const data = await ProductModel.find().sort({ rating: 1 })
+        //     res.send(data)
+        // }
+
+
+    } catch (error) {
+        res.send({ "msg": error })
+    }
+})
+
 
 ProductRouter.use(authenticate)
 
-ProductRouter.get("/admin",async (req, res)=>{
-    const adminId=req.body.adminId;
+ProductRouter.get("/admin/:id", async (req, res) => {
+    // const adminId=req.body.adminId;
+    const adminId = req.params.id;
     try {
-        console.log(adminId)
-        const data= await ProductModel.find({adminId:adminId})
-        res.send(data)
+        const searchTerm = req.query.title;
+
+        if (searchTerm !== undefined) {
+
+            const data = await ProductModel.find({ title: { $regex: new RegExp(searchTerm, "i") } }).exec();
+            res.send(data);
+        } else {
+
+            console.log(adminId)
+            const data = await ProductModel.find({ adminId: adminId })
+            res.send(data)
+        }
     } catch (error) {
-        res.send({"admin_get_req":error})
+        res.send({ "admin_get_req": error })
     }
 })
 ProductRouter.post("/create", async (req, res) => {

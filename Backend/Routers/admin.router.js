@@ -50,7 +50,7 @@ Adminrouter.post("/login",async (req,res)=>{
                 // result == true
                 if(result){
                     const token = jwt.sign({ adminId:adminId }, process.env.key);
-                    res.send({"msg":"Login Succesfuly","token":token})
+                    res.send({"msg":"Login Succesfuly","token":token,"adminId":adminId})
                 }else{
                     res.send("Wrong Credentials")
                 }

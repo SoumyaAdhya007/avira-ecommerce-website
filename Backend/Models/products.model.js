@@ -10,7 +10,7 @@ const productsSchema=mongoose.Schema({
     "product-category":String,
     "category":String,
     "rating":Number,
-    "size":[],
+    // "size":[],
     "size-rage":String,
     "stock":Boolean,
     "adminId":String

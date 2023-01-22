@@ -1,12 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5
+    background-color: #f5f5f5;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 #container {
     width: 93%;
     margin: auto;
+    /* display: flex; */
+    margin-bottom: 150px;
 }
 
 
@@ -61,15 +65,16 @@ body {
     width: 20%;
     display: flex;
     flex-direction: column;
-    /* background-color: #040303; */
+    background-color: #ff6a00;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* color: white; */
+    color: white;
     border-radius: 10px;
-    box-shadow: 5px 10px rgb(49, 52, 55,0.1);
+    box-shadow: 5px 10px rgba(190, 123, 22, 0.1);
 }
-#adminOptions div {
+
+/* #adminOptions div {
     border: 1px solid rgb(0, 0, 0,0.5);
-}
+} */
 
 .adminOptions-item {
     /* margin: 10px; */
@@ -80,7 +85,7 @@ body {
 }
 
 .adminOptions-item:hover {
-    background-color: rgb(185, 227, 241,0.4);
+    background-color: rgb(185, 227, 241, 0.4);
     cursor: pointer;
 }
 
@@ -203,3 +208,254 @@ i {
 #addnewproperty label {
     font-size: 20px;
 }
+
+
+#wrapper {
+    /* width: 1170px;
+    margin: 0 auto; */
+    margin-left: 20px;
+    width: 77%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px 20px;
+}
+
+figure {
+    /* width: 32%; */
+    float: left;
+    margin: 0;
+}
+
+figcaption {
+    text-align: justify;
+    margin-left: 15px;
+}
+
+.hover-animation {
+    position: relative;
+    height: 350px;
+    /* width: 350px; */
+    margin: 10% auto 0;
+    color: #fff;
+    /* box-shadow: 5px 5px 15px rgba(0,0,0,0.6); */
+}
+
+.hover-animation img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 350px;
+
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hover-animation .btn-add {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    padding: 305px 0;
+    text-align: center;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+
+}
+
+.hover-animation .btn-add>button {
+
+    /* margin-top: 250px; */
+    padding: 12px 10px;
+    width: 100%;
+    border: none;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+}
+
+.hover-animation:hover div {
+    opacity: 1;
+
+}
+
+/* figcaption:hover h2{
+    display: none;
+
+  } */
+.hover-animation img.img-front:hover {
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+figcaption div {
+    width: 45%;
+    display: flex;
+    /* margin: auto; */
+    /* text-align: center; 
+    */
+    /* align-items: center; */
+}
+
+figcaption div>h4 {
+    color: darkslategray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+figcaption div>strike {
+    margin-left: 10px;
+    font-size: 13px;
+    color: rgb(45, 42, 40);
+}
+
+figcaption p {
+    text-align: center;
+    color: limegreen;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#product-form{
+    width: 60%; 
+    /* margin: auto; */
+    margin-left:30px ;
+  }
+
+#product-form h4{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+  }
+  #product-form input, #product-form>select,#product-form>option,#product-form>button{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* margin: auto; */
+    width: 100%;
+    padding: 10px 0;
+
+  }
+    #dashboard{
+        width: 100%;
+    }
+  .dash-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .dash-top>div{
+    text-align: center;
+    width: 30%;
+    height: 100px;
+
+  }
+  .dash-top>div>h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    }
+    .dash-top>div:nth-child(1){
+        background-color: rgb(0, 200, 255,0.7);
+        border-radius: 5%;
+    }
+    .dash-top>div:nth-child(2){
+        background-color: rgba(0, 255, 60, 0.7);
+        border-radius: 5%;
+    }
+    .dash-top>div:nth-child(3){
+        background-color: rgba(255, 242, 0, 0.7);
+        border-radius: 5%;
+    }
+
+
+  footer{
+    height: auto;
+    width: 100%;
+    background-color: #292828;
+    /* padding: 10px; */
+}
+.footer-img-div{
+    /* display: inline; */
+    width: 22%;
+    margin: auto;
+    height: 99px;
+    padding-top: 23px;
+}
+.footer-img-div>img{
+    /* display: inline; */
+    width: 100%;
+    /* margin: auto; */
+    height: 100%;
+}
+.footer-text{
+    text-align: center;
+}
+/* .footer-text>span{
+} */
+.footer-text a{
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+.footer-text p{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+.email{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+.email input{
+    padding: 10px;
+    border: none;
+
+}
+.logo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo>i{
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+}
+.footer-down-right p,.footer-down-right a,.footer-down-right h3{
+    color: white;
+}
+footer p {
+    color:  white;
+    margin-top: 5px;
+}
+.footer-down{
+    margin: 55px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-down-left{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+.footer-down-left h2{
+    color: white;
+}
+.footer-down-down{
+    margin-left: 53px;
+    padding-bottom: 23px;
+}
+
+
+
+
+
+
+
+

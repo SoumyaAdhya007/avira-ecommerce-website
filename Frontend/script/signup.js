@@ -1,5 +1,8 @@
-let baseURL="http://localhost:7070"
+let baseURL="https://powerful-erin-jewelry.cyclic.app"
 let container = document.getElementById('container')
+let cartTotal=document.getElementById("cart-length");
+cartTotal.innerText=""
+cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
 
 toggle = () => {
 	container.classList.toggle('sign-in')
@@ -40,11 +43,9 @@ async function signUpFun() {
 				body:JSON.stringify(obj)
 			  })
 			  if(signup_res.ok){
-				console.log(signup_res.json())
-				alert("Hurry, User has been created !!")
-			  }
-			  else{
-				alert("You Have Allready register");
+				  let massage= await signup_res.json()
+				console.log(massage.msg)
+				alert(`${massage.msg}`)
 			  }
 		} catch (error) {
 			alert("Something went wrong")
@@ -74,8 +75,8 @@ async function signin(){
 		let token =await login_request.json();
 		localStorage.setItem("token",token.token)
 		console.log(token.token)
-		alert("User has been successfully Logged In.")
-		// window.location.href = "home.html";
+		alert(`${token.msg}`)
+		window.location.href = "index.html";
   
 	  }
 	  else{
