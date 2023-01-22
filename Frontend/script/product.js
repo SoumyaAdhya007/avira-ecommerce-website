@@ -1,4 +1,8 @@
-let baseurl = "http://localhost:7070"
+let baseurl = "https://powerful-erin-jewelry.cyclic.app"
+
+let cartTotal=document.getElementById("cart-length");
+cartTotal.innerText=""
+cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
 
 function clickimg(smallImg) {
     let fullImg = document.getElementById("imagebox");
@@ -59,27 +63,30 @@ function productFun(dataPro) {
             <div class="content">
                 <h2>${data["title"]}</h2>
                 <div class="review">
-                    <!-- <span>55.00</span> -->
                     <span>${data.rating}/5(899)</span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                 </div>
                 <div class="price-box">
-                    <p class="price">$${data.price}</p>
-                    <strike>${data.price + 200}</strike>
+                    <p class="price-price">&#8377;${data.price}</p>
+                    <strike>&#8377;${data.price + 200}</strike>
                 </div>
                 <div class="klarna-log-div">
                     <div class="klarna-log-child-div">
                         <div></div>
                     </div>
                     <div>
-                        <p>4 interest-free payments of $92.72.</p>
+                        <p>4 interest-free payments of &#8377;92.72.</p>
                         <span>Learn More</span>
                     </div>
                 </div>
                 <div class="sale">
                     <p> <i class="fa-solid fa-tag"></i>Sale</p>
                 </div>
-                <button>Standard</button>
+                <button>${data["size-rage"]}</button>
                 <p class="select-text">Size:</p>
                 <select name="size" id="size" onclick='sizefun()'>
                     <option value="select size">Select Size</option>
@@ -142,10 +149,6 @@ function productFun(dataPro) {
     </div>`;
 
     container.innerHTML = productData;
-
-
-
-
 }
 
 let size = "";
@@ -226,8 +229,9 @@ async function addFun() {
                 body: JSON.stringify(obj)
             })
             if (res.ok) {
-                productfetch()
                 alert("Added To cart");
+                // container.innerHTML=""
+                window.location.reload()
             }
 
         }
@@ -236,8 +240,8 @@ async function addFun() {
         }
     }  
     else {
-        productfetch()
         alert("Product Already dded to Your Cart");
+        productfetch()
     }
     // console.log("Added to cart section")
 }

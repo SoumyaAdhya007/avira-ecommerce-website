@@ -14,6 +14,12 @@
 // <div id="changeText"></div>
 
 // JavaScript to toggle dropdown menu on click
+
+let cartTotal=document.getElementById("cart-length");
+cartTotal.innerText=""
+cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+
+
 const dropdownMenus = document.querySelectorAll('nav ul li');
 
 dropdownMenus.forEach(menu => {

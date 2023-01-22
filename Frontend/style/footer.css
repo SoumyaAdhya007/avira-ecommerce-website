@@ -1,0 +1,80 @@
+footer{
+    height: auto;
+    width: 100%;
+    background-color: #292828;
+    /* padding: 10px; */
+}
+.footer-img-div{
+    /* display: inline; */
+    width: 22%;
+    margin: auto;
+    height: 99px;
+    padding-top: 23px;
+}
+.footer-img-div>img{
+    /* display: inline; */
+    width: 100%;
+    /* margin: auto; */
+    height: 100%;
+}
+.footer-text{
+    text-align: center;
+}
+/* .footer-text>span{
+} */
+.footer-text a{
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+.footer-text p{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+.email{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+.email input{
+    padding: 10px;
+    border: none;
+
+}
+.logo{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logo>i{
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+}
+.footer-down-right p,.footer-down-right a,.footer-down-right h3{
+    color: white;
+}
+footer p {
+    color:  white;
+    margin-top: 5px;
+}
+.footer-down{
+    margin: 55px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-down-left{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+.footer-down-left h2{
+    color: white;
+}
+.footer-down-down{
+    margin-left: 53px;
+    padding-bottom: 23px;
+}

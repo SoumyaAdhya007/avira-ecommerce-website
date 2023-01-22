@@ -24,7 +24,7 @@
 }
 #cart-length{
   padding: 3px 8px;
-  background-color: rgb(87 87 87);
+  background-color: #6ab6d4;
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -204,7 +204,7 @@ nav{
   text-transform: uppercase;
 }
 #icons{
-  margin-left: 130px;
+  margin-left: 150px;
   justify-content: space-evenly;
 }
 /* #icons>a:nth-of-type(1):before {
@@ -276,5 +276,5 @@ nav{
   text-decoration: none;
  } */
  .header input{
-    padding: 10px 110px 6px 17px;
+    padding: 6px 60px;
  }

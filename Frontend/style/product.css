@@ -63,10 +63,11 @@
 .review{
     /* background-color: #008000; */
     display: inline-block;
-    color: #fff;
+    color: black;
+    font-weight: bold;
     padding: 4px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 19px;
 
 }
 .review .fa{
@@ -75,7 +76,7 @@
 .price-box{
     display: flex;
 }
-.price{
+.price-price{
     color: rgb(29, 28, 28);
     font-size: 26px;
     font-weight: bold;

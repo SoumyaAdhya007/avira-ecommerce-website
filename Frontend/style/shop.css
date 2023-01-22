@@ -163,3 +163,7 @@ padding: 12px 10px;
     color: limegreen;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
+  .rating{
+    color: rgb(28, 27, 27);
+    font-weight: bold;
+  }
