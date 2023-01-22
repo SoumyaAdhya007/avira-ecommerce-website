@@ -9,7 +9,9 @@ const cartDataSchema=mongoose.Schema({
     "price":Number,
     "category":String,
     "rating":Number,
-    "size":[],
+    "size":String,
+    "quantity":Number,
+    "subtotal":Number,
     "stock":Boolean,
     "adminId":String,
     "userId":String

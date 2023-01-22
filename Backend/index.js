@@ -7,6 +7,7 @@ const {CartRouter}=require("./Routers/cart.router")
 const {connection}=require("./config/db");
 const cors = require('cors')
 const app=express();
+app.use(cors())
 app.use(express.json());
 app.use("/users",UserRouter)
 app.use("/admins",Adminrouter)
@@ -14,7 +15,6 @@ app.use("/admins",Adminrouter)
 app.use("/carts",CartRouter)
 app.use("/products",ProductRouter)
 
-app.use(cors())
 app.listen(process.env.port, async ()=>{
     try {
         await connection;

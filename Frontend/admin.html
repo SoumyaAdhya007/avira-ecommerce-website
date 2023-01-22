@@ -1,46 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style/product.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="https://kit.fontawesome.com/f90c67bbfa.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
+    <title>AVIRA | Merchent</title>
     <link rel="stylesheet" href="./style/nav.css">
+    <link rel="stylesheet" href="./style/admin.css">
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f90c67bbfa.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <header class="header">
 		<a href="#" class="logo"><img src="./img/avira-nav-logo.png" alt=""></a>
 		<nav>
 		  <ul class="menu-items">
-			<li><a href="#" class="menu-item">Home</a></li>
-			<!-- <li class="dropdown">
-			  <a href="#" class="menu-item">Dropdown Menu</a>
-			  <ul class="dropdown-menu">
-				<li><a href="#" class="menu-item">Item 1</a></li>
-				<li><a href="#" class="menu-item">Item 2</a></li>
-				<li class="dropdown dropdown-right">
-				  <a href="#" class="menu-item">
-					Item 3
-					<i class="fas fa-angle-right"></i>
-				  </a>
-				  <ul class="menu-right">
-					<li><a href="#" class="menu-item">Item 3.1</a></li>
-					<li><a href="#" class="menu-item">Item 3.2</a></li>
-					<li><a href="#" class="menu-item">Item 3.3</a></li>
-					<li><a href="#" class="menu-item">Item 3.4</a></li>
-				  </ul>
-				</li>
-				<li><a href="#" class="menu-item">Item 4</a></li>
-			  </ul>
-			</li> -->
-			<li>
 			  <a href="#" class="menu-item">Men</a>
 			  <div class="mega-menu">
 				<div class="content">
@@ -260,7 +234,6 @@
 				</div>
 			  </div>
 			</li>
-			<!-- <li>
 			  <a href="#" class="menu-item">Blog</a>
 			  <div class="mega-menu blog">
 				<div class="content">
@@ -311,7 +284,7 @@
 				  </div>
 				</div>
 			  </div>
-			</li> -->
+			</li>
 			<li><a href="#" class="menu-item">About</a></li>
 		  </ul>
 		</nav>
@@ -325,149 +298,22 @@
 		  <a href="./cart.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
 		</div>
 	  </header>
-    <div class="container">
-        <!-- <div class="wraper">
-            <div class="product-box">
-                <div class="all-images">
 
-                    <div class="small-images">
-                        <img src="https://assets.ajio.com/medias/sys_master/root/20220326/T06L/623e3371aeb26921aff96490/-473Wx593H-441138425-navy-MODEL4.jpg"
-                            onclick="clickimg(this)">
-                        <img src="https://assets.ajio.com/medias/sys_master/root/20220326/T06L/623e3371aeb26921aff96490/-473Wx593H-441138425-navy-MODEL4.jpg"
-                            onclick="clickimg(this)">
-                        <img src="https://assets.ajio.com/medias/sys_master/root/20220823/mXcv/6303ef9bf997dd394c11692d/-473Wx593H-441145957-maroon-MODEL.jpg"
-                            onclick="clickimg(this)">
-                        <img src="https://assets.ajio.com/medias/sys_master/root/20220326/T06L/623e3371aeb26921aff96490/-473Wx593H-441138425-navy-MODEL4.jpg"
-                            onclick="clickimg(this)">
-                    </div>
-                    <div class="main-images">
-                        <img src="https://assets.ajio.com/medias/sys_master/root/20220823/mXcv/6303ef9bf997dd394c11692d/-473Wx593H-441145957-maroon-MODEL.jpg"
-                            id="imagebox">
-
-                    </div>
-                </div>
-
+    <div id="container">
+        <div id="notification">Hello Welcome back Admin</div>
+        <div id="cont">
+            <div id="adminOptions">
+                <div class="adminOptions-item"><i class="fa-solid fa-user"></i>Dashboard</div>
+                <div id="allproperties" class="adminOptions-item" onclick="allproduct()">See all listed Products</div>
+                <div id="propertybyid" class="adminOptions-item">Search Your Products</div>
+                <div id="propertybyname" class="adminOptions-item">Search a property by name</div>
+                <div id="addnew" class="adminOptions-item">Add a new Products</div>
+                <div id="update" class="adminOptions-item">Update Your Product</div>
+                <div id="delete" class="adminOptions-item">Delete Your Product</div> 
             </div>
-            <div class="text">
-                <div class="content">
-                    <h2>Men’s PFG Tamiami™ II Long Sleeve Shirt</h2>
-                    <div class="review">
-                         <span>55.00</span>
-                        <span>4/5(899)</span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <div class="price-box">
-                        <p class="price">700</p>
-                        <strike>900</strike>
-                    </div>
-                    <div class="klarna-log-div">
-                        <div class="klarna-log-child-div">
-                            <div></div>
-                        </div>
-                        <div>
-                            <p>4 interest-free payments of $92.72.</p>
-                            <span>Learn More</span>
-                        </div>
-                    </div>
-                    <div class="sale">
-                        <p> <i class="fa-solid fa-tag"></i>Sale</p>
-                    </div>
-                    <button>Standard</button>
-                    <p class="select-text">Size:</p>
-                    <select name="size" id="size">
-                        <option value="select size">Select Size</option>
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="X">X</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                    </select>
-                    <p class="select-text">Ouantitiy</p>
-                    <select name="QTY" id="QTY">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="10">10</option>
-                    </select>
-                    <p><i class="fa-solid fa-circle-exclamation"></i>Runs Large <span
-                            style="text-decoration: underline;font-weight: bold;">Consider sizing down</span></p>
-                    <button>
-                        <span class="fa fa-shoping-cart"></span>
-                        Add to Cart
-                    </button>
-                    <p class="select-text"><i class="fa-solid fa-dollar-sign"></i> Members get <span
-                            style="text-decoration: underline;font-weight: bold;">Members get free shipping + $1.40 in
-                            rewards</span></p>
-                </div>
-            </div>
+            <div id="displayArea"></div>
         </div>
-        <hr>
-        <div id="details">
-
-                <h3 >Details</h3>
-                    <h3>ON AND OFF THE WATER</h3>
-                    <p>Made for comfort and functionality while fishing or just enjoying the outdoors. The Tamiami
-                        features wicking, sun-shielding fabric.</p>
-                    <h3>COOLING</h3>
-                    <p>Mesh-lined back vents let in and out a cooling breeze in the hottest, muggiest weather.</p>
-                    <h3>SUBTLE UTILITY</h3>
-                    <p>A rod holder and plenty of low-profile pockets free up your hands, while the sleeves roll-up for
-                        versatility.</p>
-                    <ul>
-                        <li>Omni-Shade UPF 40 provides maximum protection for long hours in the sun</li>
-                        <li>Omni-Wick technology actively breathes and pulls moisture away from your skin</li>
-                        <li>Quick dry</li>
-                        <li>Roll-up sleeves with tab holders</li>
-                        <li>Antimicrobial treatment protects this product from bacterial growth</li>
-                        <li>Mesh-lined vent at center back</li>
-                        <li>Rod holder</li>
-                        <li>Center Back Length: 30.5"</li>
-                        <li>Imported</li>
-                    </ul>
-
-        </div> -->
     </div>
-
-    <!-- <div class="product-details-div">
-                <h1>Men’s PFG Tamiami™ II Long Sleeve Shirt</h1>
-                <div>
-                    <p>55.00</p>
-                    <p>4/5(899)</p>
-                </div>
-                <div class="klarna-log-div">
-                    <div class="klarna-log-child-div">
-                        <img src="./img/karlna-img-log.png" alt="">
-                    </div>
-                    <div>
-                        <p>4 interest-free payments of $92.72.</p>
-                        <span>Learn More</span>
-                    </div>
-                </div>
-                <button>Standard</button>
-                <p>Size</p>
-                <div>
-
-                </div>
-                <div id="size-btn-div">
-                    <button>XS</button>
-                    <button>S</button>
-                    <button>M</button>
-                    <button>L</button>
-                    <button>XL</button>
-                    <button>XL</button>
-                    <button>XXL</button>
-                </div>
-            </div>
-        </div> -->
     </div>
 </body>
-<script src="./script/product.js"></script>
-
 </html>
