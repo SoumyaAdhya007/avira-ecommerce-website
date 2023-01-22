@@ -119,6 +119,10 @@ hr{
 .shoping-cart-middle-left-products-child-div div{
     width:  30%;
 }
+.shoping-cart-middle-left-products-child-div div>img{
+    width:  100%;
+    height: 100%;
+}
 .product-cart-deatils{
     width: 34%;
     margin-top: 10px;
@@ -247,6 +251,9 @@ hr{
     margin-top: 20px;
     margin-bottom: 30px;
     text-align: center;
+}
+.shopping-cart-img-div{
+    width: ;
 }
 .secure{
     /* margin-top: 30px; */

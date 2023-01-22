@@ -10,12 +10,12 @@ ProductRouter.get("/", async (req, res) => {
     try {
         const category = req.query.category;
         const price = req.query.price;
-
+      
         // price query
 
         if (price <= 500 && category != undefined) {
             console.log(500)
-            const data = await ProductModel.find({ category: req.query.category, price: { $lte: 500 } })
+            const data = await ProductModel.find({ category: req.query.category})
             res.send(data)
         }
         else if (price <= 1000 && category != undefined) {
@@ -67,6 +67,20 @@ ProductRouter.get("/", async (req, res) => {
 
         if(rating==="top" && category !== undefined){
             const data = await ProductModel.find({ category: category }).sort({ rating: -1 })
+            res.send(data)
+        }
+
+        else if(category!=undefined){
+            const data=await ProductModel.find({category})
+            res.send(data)
+        }
+        let id=req.query.id;
+        if(id!=undefined){
+            let data= await ProductModel.find({_id:id});
+            res.send(data)
+        }
+        else{
+            let data= await ProductModel.find();
             res.send(data)
         }
     }catch (error) {

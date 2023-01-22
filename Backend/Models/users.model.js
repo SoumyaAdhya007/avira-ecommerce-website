@@ -5,8 +5,8 @@ const userSchema=mongoose.Schema({
     email:String,
     password:String,
     zipcode:Number,
-    phoneNo:Number,
-    gender:String
+    phoneNo:Number
+    // gender:String
     // DOB:String
 })
 

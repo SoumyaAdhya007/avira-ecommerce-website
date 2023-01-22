@@ -38,7 +38,9 @@
     cursor: pointer;
 
 }
-
+.fa-shoping-cart{
+    color: white;
+}
 .small-images img:hover{
     opacity: 1;
 }
