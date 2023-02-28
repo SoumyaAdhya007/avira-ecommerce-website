@@ -15,10 +15,13 @@
 
 // JavaScript to toggle dropdown menu on click
 
-let cartTotal=document.getElementById("cart-length");
-cartTotal.innerText=""
-cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+// let cartTotal=document.getElementById("cart-length");
+// cartTotal.innerText=""
+// cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
 
+// const {navdeatils}=require("./nav");
+
+// navdeatils()
 
 const dropdownMenus = document.querySelectorAll('nav ul li');
 
