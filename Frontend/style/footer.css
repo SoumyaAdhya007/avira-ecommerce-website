@@ -78,3 +78,42 @@ footer p {
     margin-left: 53px;
     padding-bottom: 23px;
 }
+
+@media (max-width:1160px){
+    .footer-down-left{
+        /* display: flex;
+        justify-content: space-between; */
+        width: 45%;
+    }
+    .footer-down-left>div{
+        width: 50%;
+    }
+    .footer-down-right{
+        width: 40%;
+    }
+}
+@media (max-width:700px){
+    .footer-down{
+        flex-direction: column;
+    }
+    .footer-down-left{
+        order: 2;
+        width: 100%;
+    }
+    .footer-down-right{
+        order: 1;
+        margin: auto;
+        width: 100%;
+    }
+    .email{
+        display: flex;
+        justify-content: space-between;
+    }
+    .email>i{
+        margin-top: 5px;
+    }
+    .footer-text{
+        width: 90%;
+        margin: auto;
+    }
+}

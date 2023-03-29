@@ -1,8 +1,6 @@
 let baseURL="https://powerful-erin-jewelry.cyclic.app"
 let container = document.getElementById('container')
-let cartTotal=document.getElementById("cart-length");
-cartTotal.innerText=""
-cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+
 
 toggle = () => {
 	container.classList.toggle('sign-in')

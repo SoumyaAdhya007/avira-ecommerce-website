@@ -1,8 +1,8 @@
 let baseurl="https://powerful-erin-jewelry.cyclic.app"
 
-let cartTotal=document.getElementById("cart-length");
-cartTotal.innerText=""
-cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+// let cartTotal=document.getElementById("cart-length");
+// cartTotal.innerText=""
+// cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
 
 // let size=""
 function sortFilter() {
@@ -142,10 +142,7 @@ function dataFuntion(data){
         return`<figure class="shop-items-child-div"  >
         <div class="hover-animation" data-id=${item._id} >
             <img class="img-back" src="${item["img-1"]}" alt="">
-            <div class="btn-add" >
-                <button onclick="cartAdd()">Add to Cart</button>
 
-            </div>
             <img class="img-front" data-id=${item._id} src="${item["img-2"]}" alt="">
             
         </div>
