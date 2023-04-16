@@ -45,7 +45,7 @@
   list-style: none;
 }
 nav{
-  margin-left: 50px;
+  margin-left: 5rem;
   background: transparent;
 }
 .logo>img{
@@ -204,8 +204,36 @@ nav{
   text-transform: uppercase;
 }
 #icons{
-  margin-left: 130px;
+  margin-left: 13rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+#user-div{
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+/* #icons>div{
+  margin-top:5px ;
+  display: flex;
   justify-content: space-evenly;
+  margin-left: 5px;
+} */
+#icons i{
+  margin-top: 0.2rem;
+  
+}
+.fa-sharp.fa-solid.fa-cart-shopping{
+  margin-top: 0.3;
+  margin-left: 5px;
+}
+#user-name{
+  margin-left: 1rem;
+ margin-right: 1rem;
 }
 /* #icons>a:nth-of-type(1):before {
   content:'\f113';
@@ -277,4 +305,33 @@ nav{
  } */
  .header input{
     padding: 10px 110px 6px 17px;
+ }
+
+
+ @media (max-width:1460px){
+  #icons{
+    margin-left: 0rem;
+  }
+ }
+
+ @media (max-width:1200px){
+  nav{
+    margin-left: 1rem;
+  }
+  .menu-items li{
+    padding: 0.5rem 1.2rem;
+  }
+ }
+ @media (max-width:1015px){
+  .menu-items li{
+    padding: 0.5rem 0.7rem;
+  }
+ }
+ @media (max-width:675px){
+  nav{
+    display: none;
+  }
+  .header input{
+    padding: 10px 50px 6px 17px;
+  }
  }

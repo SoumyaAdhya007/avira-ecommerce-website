@@ -27,69 +27,76 @@ ProductRouter.get("/", async (req, res) => {
         res.send({ "get_msg": error })
     }
 })
-ProductRouter.get("/search", async (req,res) => {
+ProductRouter.get('/search', async (req, res) => {
+    const payload = req.query;
+    if (payload.title) {
+        let title = payload.title.toLowerCase();
+        try {
+            const products = await ProductModel.find({ title: { $regex: '(?i)' + title } });
+            return res.send(products)
+        } catch (error) {
+            return res.send({ message: error.message })
+        }
+    }
     try {
-        const searchTerm = req.query.title;
-        const data = await ProductModel.find({ title: { $regex: new RegExp(searchTerm, "i") } });
-        res.send(data);
-
-
+        const products = await ProductModel.find(payload)
+        res.send(products)
     } catch (error) {
-        res.send({ "msg": error })
+        res.status(500).send({ message: error.message })
     }
 })
 
 
-ProductRouter.get("/price", async (req,res) => {
-    try {
-        const priceQ = req.query.price;
-        if (priceQ <= 500) {
-            const data = await ProductModel.find({ price: { $lte: 500 } })
-            res.send(data)
-        }
-         else if (priceQ <= 1000) {
-            const data = await ProductModel.find({ price: { $gte: 501, $lte: 1000 }})
-            res.send(data)
-        }
-         else if (priceQ <= 1500) {
-            const data = await ProductModel.find({ price: { $gte: 1001, $lte: 1500 }})
-            res.send(data)
-        }
-         else if (priceQ >=2000) {
-            const data = await ProductModel.find({ price: { $gte: 2000}})
-            res.send(data)
-        }
-        else if (priceQ === "dcd") {
-            const data = await ProductModel.find().sort({ price: -1 })
-            res.send(data)
-        }
-        else if (priceQ === "acd") {
-            const data = await ProductModel.find().sort({ price: 1 })
-            res.send(data)
-        }
+// ProductRouter.get("/price", async (req,res) => {
+//     try {
+//         const priceQ = req.query.price;
+//         if (priceQ <= 500) {
+//             const data = await ProductModel.find({ price: { $lte: 500 } })
+//             res.send(data)
+//         }
+//          else if (priceQ <= 1000) {
+//             const data = await ProductModel.find({ price: { $gte: 501, $lte: 1000 }})
+//             res.send(data)
+//         }
+//          else if (priceQ <= 1500) {
+//             const data = await ProductModel.find({ price: { $gte: 1001, $lte: 1500 }})
+//             res.send(data)
+//         }
+//          else if (priceQ >=2000) {
+//             const data = await ProductModel.find({ price: { $gte: 2000}})
+//             res.send(data)
+//         }
+//         else if (priceQ === "dcd") {
+//             const data = await ProductModel.find().sort({ price: -1 })
+//             res.send(data)
+//         }
+//         else if (priceQ === "acd") {
+//             const data = await ProductModel.find().sort({ price: 1 })
+//             res.send(data)
+//         }
 
 
-    } catch (error) {
-        res.send({ "msg": error })
-    }
-})
-ProductRouter.get("/rating", async (req,res) => {
-    try {
-        let rating = req.query.rating;
-        if (rating === "top") {
-            const data = await ProductModel.find().sort({ rating: -1 })
-            res.send(data)
-        } 
-        // else {
-        //     const data = await ProductModel.find().sort({ rating: 1 })
-        //     res.send(data)
-        // }
+//     } catch (error) {
+//         res.send({ "msg": error })
+//     }
+// })
+// ProductRouter.get("/rating", async (req,res) => {
+//     try {
+//         let rating = req.query.rating;
+//         if (rating === "top") {
+//             const data = await ProductModel.find().sort({ rating: -1 })
+//             res.send(data)
+//         } 
+//         // else {
+//         //     const data = await ProductModel.find().sort({ rating: 1 })
+//         //     res.send(data)
+//         // }
 
 
-    } catch (error) {
-        res.send({ "msg": error })
-    }
-})
+//     } catch (error) {
+//         res.send({ "msg": error })
+//     }
+// })
 
 
 ProductRouter.use(authenticate)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Avira | Cart</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f90c67bbfa.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./style/footer.css">
@@ -20,7 +20,6 @@
 		<a href="./index.html" class="logo"><img src="./img/avira-nav-logo.png" alt=""></a>
 		<nav>
 		  <ul class="menu-items">
-			<li><a href="./index.html" class="menu-item">Home</a></li>
 			<li>
 			  <a href="./shop-men.html" class="menu-item">Men</a>
 			  <div class="mega-menu">
@@ -246,14 +245,20 @@
 		</nav>
 		
 		<div id="icons">
-            <input type="text" id="search"  placeholder="Search">
-		  <a href="#" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass"></i></a>
-		  &nbsp;&nbsp;&nbsp;&nbsp;
-		  <a href="./signup.html" ><i class="fa-regular fa-user" style="font-size: 22px;"></i></a>
-		  <span id="user-name">profile</span>
-		  &nbsp;&nbsp;&nbsp;&nbsp;
-		  <span id="cart-length" >6</span>
-		  <a href="./cart.html"><i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;color: rgb(47, 49, 50);"></i></a>
+      <!-- <div>
+        <input type="text" id="search"  placeholder="Search">
+        <a href="#" onclick="searchProduct()"><i class="fa-solid fa-magnifying-glass"></i></a>
+      </div> -->
+		  <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+      <div id="user-div">
+        <a href="./signup.html" ><i class="fa-regular fa-user" style="font-size: 22px;"></i></a>
+        <h3 id="user-name">profile</h3>
+      </div>
+		  <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+		  <!-- <span id="cart-length" >6</span> -->
+      <div>
+        <a href="./cart.html"><i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 22px;color: rgb(47, 49, 50);"></i></a>
+      </div>
 		</div>
 	  </header>
     <div id="shoping-cart-top-div">
@@ -468,7 +473,7 @@
                             <p>Secure 256-bit TLS encrypted payment</p>
                     </div>
                     <p class="or">Accepted Payment Methods</p>
-                    <img src="./img/payment-logo.png" alt="">
+                    <img  class="payment-img" src="./img/payment-logo.png" alt="">
                 </div>
             </div>
         </div>

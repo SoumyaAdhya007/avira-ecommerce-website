@@ -29,7 +29,7 @@
     color: #EEEEEE;
     font-family: "open sans", -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, "helvetica neue", Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
     ;
-    font-size: 60px;
+    font-size: 3rem;
     font-weight: bolder;
 }
 
@@ -106,18 +106,27 @@
     display: flex;
     justify-content: space-between;
     padding:10px 50px;
+    overflow-x: auto;
+
+
+}
+#bottom-div>div::-webkit-scrollbar{
+width: o;
 }
 .bottom-div-item{
     min-height: auto;
     background-color: white;
-    width: 24%;
+    /* width: 24%; */
+    max-width: 340px;
+    min-width: 200px;
+    margin-left: 10px;
 }
 .bottom-div-item>div{
     width: 100%;
     min-height: 250px;
 }
 .bottom-div-item p,.bottom-div-item a,.bottom-div-item h3{
-    padding:10px 30px;
+    padding:1rem 2rem;
     color: black;
 }
 .bottom-div-item a{
@@ -398,7 +407,7 @@ left:30px;
 .feat-img-I h2{
     font-family: "gert bold", sans-serif;
 
-    padding-top: 406px;
+    padding-top: 25rem;
     padding-left: 10px;
     color: white;
 }
@@ -430,7 +439,7 @@ left:30px;
 .feat-img-II h2{
     font-family: "gert bold", sans-serif;
 
-    padding-top: 406px;
+    padding-top: 25rem;
     padding-left: 10px;
     color: white;
 }
@@ -443,7 +452,7 @@ left:30px;
 .feat-img-III h2{
     font-family: "gert bold", sans-serif;
 
-    padding-top: 406px;
+    padding-top: 25rem;
     padding-left: 10px;
     color: white;
 }
@@ -462,29 +471,37 @@ left:30px;
 }
 .play-child-div{
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* grid-template-columns: repeat(4,1fr);
+    gap: 20px; */
 }
 .fishing{
+    width: 23%;
     height: 230px;
 
     background: url(../img/fising-img.jpg);
     background-size: 100% 100%;
 }
 .hiking{
+    width: 23%;
+
     height: 230px;
 
     background: url(../img/hiking-img.jpg);
     background-size: 100% 100%;
 }
 .hunting{
+    width: 23%;
+
     height: 230px;
 
     background: url(../img/hunting-img.jpg);
     background-size: 100% 100%;
 }
 .ski-snow{
+    width: 23%;
+
     height: 230px;
 
     background: url(../img/ski-snow-img.jpg);
@@ -522,3 +539,49 @@ left:30px;
 }
 
 
+
+
+@media (max-width:1170px){
+    #snow-shop-btn{
+        width: 40%;
+        padding-top: 200px;
+        padding-left: 166px;
+    }
+}
+@media (max-width:875px){
+    #snow-shop-btn{
+        width: 50%;
+        padding-top: 100px;
+        padding-left: 100px;
+    }
+}
+@media (max-width:570px){
+    #snow-shop-btn{
+        width: 70%;
+        padding-top: 100px;
+        padding-left: 100px;
+    }
+}
+@media (max-width:1450px){
+    .get-rewards-div-btn{
+        width: 40%;
+    }
+    .get-rewards-div-btn button{
+        width: 100%;
+    }
+}
+@media (max-width:850px){
+    #get-rewards-div>div:nth-child(1){
+        width: 60%;
+    }
+}
+@media (max-width:1070px){
+    #jacket-btn-div>div{
+        width: 40%;
+    }
+}
+@media (max-width:775px){
+    #jacket-btn-div{
+        width: 60%;
+    }
+}

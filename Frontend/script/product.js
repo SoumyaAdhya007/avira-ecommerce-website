@@ -1,8 +1,6 @@
 let baseurl = "https://powerful-erin-jewelry.cyclic.app"
 
-let cartTotal=document.getElementById("cart-length");
-cartTotal.innerText=""
-cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+
 
 function clickimg(smallImg) {
     let fullImg = document.getElementById("imagebox");
