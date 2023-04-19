@@ -41,17 +41,18 @@
   <li> Responsiveness for different devices</li>
 </ul>  -->
 <h3> Project Highlights: </h3>
-- Home Page
+
+## Home Page
 
  ![avira_screenshot](https://user-images.githubusercontent.com/112754567/233000197-d64291a7-e182-4e29-897c-eba678808f1d.png)
  
 ----
-- Product Page
+## Product Page
 
 ![Avira(2)](https://user-images.githubusercontent.com/112754567/233000272-542a6390-e32b-4d75-b4d6-564f046fe79a.png)
 
 -----
-- Cart Page
+## Cart Page
 
 ![Avira(3)](https://user-images.githubusercontent.com/112754567/233000328-f1170425-1f0b-46a1-b88d-ffa58aa069a2.png)
 <br>
