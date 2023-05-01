@@ -178,12 +178,85 @@ padding: 12px 10px;
     font-weight: bold;
   }
 
-  @media (max-width:1100px){
+  /* @media (max-width:1100px){
     #wrapper {
       margin-left: 20px;
       width: 77%;
       display: grid;
       grid-template-columns: repeat(3,1fr);
       gap: 10px 10px;
+  }
+  } */
+  
+/* ---------------------------------- meadia max 1260 px -----------------------------------------------------------------------  */
+
+@media (max-width:1260px){
+  #wrapper{
+  
+    grid-template-columns: repeat(4,1fr);
+  }
+  }
+  
+  /* ---------------------------------- meadia max 1010 px -----------------------------------------------------------------------  */
+  @media (max-width:1010px){
+  #wrapper{
+  
+    grid-template-columns: repeat(3,1fr);
+  }
+  .shop-filter-desktop{
+    width: 25%;
+  }
+  .size-range{
+    width: 100%;
+  }
+  /* .size-range div{
+    width: 100%;
+  } */
+  }
+  
+  /* ---------------------------------- meadia max 765 px -----------------------------------------------------------------------  */
+  @media (max-width:765px){
+  #wrapper{
+    width: 70%;
+    grid-template-columns: repeat(2,1fr);
+  }
+  .shop-filter-desktop{
+    width: 30%;
+  }
+  }
+  /* ---------------------------------- meadia max 600 px -----------------------------------------------------------------------  */
+  
+  @media (max-width:600px){
+  #wrapper{
+    width: 50%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .shop-filter-desktop{
+    width: 35%;
+  }
+  }
+  /* ---------------------------------- meadia max 480 px -----------------------------------------------------------------------  */
+  @media (max-width: 480px){
+  #wrapper{
+    width: 50%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .shop-filter-desktop{
+    width: 45%;
+  }
+  }
+  /* ---------------------------------- meadia max 380 px -----------------------------------------------------------------------  */
+  @media (max-width: 480px){
+  #wrapper{
+    width: 55%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .shop-filter-desktop{
+    width: 45%;
+  }
+  .similar-products-price-div{
+    display: flex;
+    /* grid-template-columns: repeat(2,1fr); */
+    flex-wrap: wrap;
   }
   }

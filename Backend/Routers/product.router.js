@@ -2,7 +2,7 @@ const express = require("express");
 const { ProductModel } = require("../Models/products.model");
 const { authenticate } = require("../Middelwares/admin.authentication.middelwres");
 // const { query } = require("express");
-
+const {AdminAuth, UserAuth}=require("../Middelwares/auth.middleware")
 // const app = express();
 const ProductRouter = express.Router();
 
@@ -47,61 +47,60 @@ ProductRouter.get('/search', async (req, res) => {
 })
 
 
-// ProductRouter.get("/price", async (req,res) => {
-//     try {
-//         const priceQ = req.query.price;
-//         if (priceQ <= 500) {
-//             const data = await ProductModel.find({ price: { $lte: 500 } })
-//             res.send(data)
-//         }
-//          else if (priceQ <= 1000) {
-//             const data = await ProductModel.find({ price: { $gte: 501, $lte: 1000 }})
-//             res.send(data)
-//         }
-//          else if (priceQ <= 1500) {
-//             const data = await ProductModel.find({ price: { $gte: 1001, $lte: 1500 }})
-//             res.send(data)
-//         }
-//          else if (priceQ >=2000) {
-//             const data = await ProductModel.find({ price: { $gte: 2000}})
-//             res.send(data)
-//         }
-//         else if (priceQ === "dcd") {
-//             const data = await ProductModel.find().sort({ price: -1 })
-//             res.send(data)
-//         }
-//         else if (priceQ === "acd") {
-//             const data = await ProductModel.find().sort({ price: 1 })
-//             res.send(data)
-//         }
+ProductRouter.get("/price", async (req,res) => {
+    try {
+        const priceQ = req.query.price;
+        if (priceQ <= 500) {
+            const data = await ProductModel.find({ price: { $lte: 500 } })
+            res.send(data)
+        }
+         else if (priceQ <= 1000) {
+            const data = await ProductModel.find({ price: { $gte: 501, $lte: 1000 }})
+            res.send(data)
+        }
+         else if (priceQ <= 1500) {
+            const data = await ProductModel.find({ price: { $gte: 1001, $lte: 1500 }})
+            res.send(data)
+        }
+         else if (priceQ >=2000) {
+            const data = await ProductModel.find({ price: { $gte: 2000}})
+            res.send(data)
+        }
+        else if (priceQ === "dcd") {
+            const data = await ProductModel.find().sort({ price: -1 })
+            res.send(data)
+        }
+        else if (priceQ === "acd") {
+            const data = await ProductModel.find().sort({ price: 1 })
+            res.send(data)
+        }
 
 
-//     } catch (error) {
-//         res.send({ "msg": error })
-//     }
-// })
-// ProductRouter.get("/rating", async (req,res) => {
-//     try {
-//         let rating = req.query.rating;
-//         if (rating === "top") {
-//             const data = await ProductModel.find().sort({ rating: -1 })
-//             res.send(data)
-//         } 
-//         // else {
-//         //     const data = await ProductModel.find().sort({ rating: 1 })
-//         //     res.send(data)
-//         // }
+    } catch (error) {
+        res.send({ "msg": error })
+    }
+})
+ProductRouter.get("/rating", async (req,res) => {
+    try {
+        let rating = req.query.rating;
+        if (rating === "top") {
+            const data = await ProductModel.find().sort({ rating: -1 })
+           return res.send(data)
+        } 
+        else {
+            const data = await ProductModel.find().sort({ rating: 1 })
+            return res.send(data)
+        }
 
 
-//     } catch (error) {
-//         res.send({ "msg": error })
-//     }
-// })
+    } catch (error) {
+        res.send({ "msg": error })
+    }
+})
 
 
-ProductRouter.use(authenticate)
 
-ProductRouter.get("/admin/:id", async (req, res) => {
+ProductRouter.get("/admin/:id",authenticate,AdminAuth, async (req, res) => {
     // const adminId=req.body.adminId;
     const adminId = req.params.id;
     try {
@@ -121,7 +120,7 @@ ProductRouter.get("/admin/:id", async (req, res) => {
         res.send({ "admin_get_req": error })
     }
 })
-ProductRouter.post("/create", async (req, res) => {
+ProductRouter.post("/create",authenticate,AdminAuth, async (req, res) => {
     const payload = req.body;
     // const post_id=req.body.adminId;
     try {
@@ -135,7 +134,7 @@ ProductRouter.post("/create", async (req, res) => {
 
     }
 })
-ProductRouter.patch("/update/:id", async (req, res) => {
+ProductRouter.patch("/update/:id",authenticate,AdminAuth, async (req, res) => {
     const payload = req.body;
     const id = req.params.id;
     const data = await ProductModel.findOne({ _id: id });
@@ -153,7 +152,7 @@ ProductRouter.patch("/update/:id", async (req, res) => {
 
     }
 })
-ProductRouter.delete("/delete/:id", async (req, res) => {
+ProductRouter.delete("/delete/:id",authenticate,AdminAuth, async (req, res) => {
     const id = req.params.id;
     const data = await ProductModel.findOne({ _id: id });
     const admin_id = data.adminId;

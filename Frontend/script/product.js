@@ -1,5 +1,38 @@
-let baseurl = "https://powerful-erin-jewelry.cyclic.app"
+function DOMLoadFun(){
+    const Big_screen_sreachbar=document.getElementById("search_bar");
+    const small_screen_sreachbar=document.querySelector(".input-box");
+    Big_screen_sreachbar.style.display="none"
+    small_screen_sreachbar.style.display="none"
+}
+DOMLoadFun()
+const cartLengthSpan= document.getElementById("cart-length")
+let baseurl = "https://powerful-erin-jewelry.cyclic.app";
 
+async function caertLengthFun(){
+    try {
+       
+       let cartRes= await fetch(`${baseurl}/carts`,{
+          method: "GET",
+          headers: {
+             "Content-Type": "application/json",
+             Authorization:localStorage.getItem("token") ,
+
+          },
+          
+       })
+       if(cartRes.ok){
+       let data= await cartRes.json();
+       if(data.length>0){
+    
+          cartLengthSpan.style.display="block";
+    
+          cartLengthSpan.innerHTML=data.length;
+       }
+          }
+    } catch (error) {
+       console.log({err:error})
+    }
+ }
 
 
 function clickimg(smallImg) {
@@ -12,13 +45,12 @@ function clickimg(smallImg) {
 let dataArr = []
 async function productfetch() {
     let productId = localStorage.getItem("product-id");
-    // console.log(productId)
     try {
         let res = await fetch(`${baseurl}/products?id=${productId}`);
         if (res.ok) {
             let dataPro = await res.json();
-            // console.log(dataPro)
             dataArr = [...dataPro]
+            localStorage.setItem("adminId", dataPro[0].adminId)
             productFun(dataPro)
 
         }
@@ -86,8 +118,7 @@ function productFun(dataPro) {
                 </div>
                 <button>${data["size-rage"]}</button>
                 <p class="select-text">Size:</p>
-                <select name="size" id="size" onclick='sizefun()'>
-                    <option value="select size">Select Size</option>
+                <select name="size" id="size" onclick='sizefun()' required>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -97,7 +128,7 @@ function productFun(dataPro) {
                     <option value="XXL">XXL</option>
                 </select>
                 <p class="select-text">Ouantitiy</p>
-                <select name="QTY" id="QTY"  onclick='qtyFun()'>
+                <select name="QTY" id="QTY"  onclick='qtyFun()' required>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -149,87 +180,58 @@ function productFun(dataPro) {
     container.innerHTML = productData;
 }
 
-let size = "";
-let quantity = ""
-function sizefun() {
-    let select = document.getElementById('size');
-    let option = select.options[select.selectedIndex];
-    size = option.value
-    console.log(option.value)
-}
-function qtyFun() {
-    let select = document.getElementById('QTY');
-    let option = select.options[select.selectedIndex];
-
-    quantity = +(option.value)||1;
-    console.log(quantity)
-}
-
-// let addCart= document.getElementById("add-cart");
-// addCart.addEventListener("click",addFun);
-let checkArr = []
-async function cartFetch() {
-    try {
-        let cart_res = await fetch(`${baseurl}/carts/`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: localStorage.getItem("token")
-            },
-        },
-        )
-        if (cart_res.ok) {
-            let data = await cart_res.json();
-            checkArr = [...data]
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
-cartFetch();
-
 async function addFun() {
-    let cartAddData = dataArr[0];
-    let obj = {
-        "img-1": cartAddData["img-1"],
-        "img-2": cartAddData["img-2"],
-        "img-3": cartAddData["img-3"],
-        "img-4": cartAddData["img-4"],
-        "title": cartAddData["title"],
-        "price": cartAddData["price"],
-        "category": cartAddData["category"],
-        "rating": cartAddData["rating"],
-        "size": size,
-        "quantity": quantity,
-        "subtotal":+(cartAddData["price"]) * quantity||+(cartAddData["price"]) * 1,
-        "stock": cartAddData["stock"],
-        "adminId": cartAddData['adminId']
-    }
-    console.log(obj)
-    let count = 0;
-    for (let i = 0; i < checkArr.length; i++) {
-        if (checkArr[i]["title"] == cartAddData["title"]) {
-            count++;
-        }
-        // console.log(checkArr[i]["title"])
-    }
-
-    console.log(count)
-    if (count == 0) {
         try {
-
-            let res = await fetch(`${baseurl}/carts/create`, {
+            let obj={
+                productId:localStorage.getItem("product-id"),
+                adminId:localStorage.getItem("adminId"),
+                quantity:document.getElementById("QTY").value,
+                size:document.getElementById("size").value,
+            }
+            console.log(obj)
+            let res = await fetch(`${baseurl}/carts/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: localStorage.getItem("token"),
+
                 },
                 body: JSON.stringify(obj)
             })
+            let data= await res.json()
+            console.log(data)
+            if(res.status==401){
+               return Swal.fire({
+                    title: 'Please log in or create an account to add this item to your bag',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
+            }
+            if(res.status==409){
+                
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Product already in cart',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
             if (res.ok) {
-                alert("Added To cart");
-                // container.innerHTML=""
-                window.location.reload()
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Added To bag',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  document.getElementById("add-cart").innerText="Added To bag";
+                    caertLengthFun()
+                  return;
             }
 
         }
@@ -237,9 +239,4 @@ async function addFun() {
             console.log(error)
         }
     }  
-    else {
-        alert("Product Already dded to Your Cart");
-        productfetch()
-    }
-    // console.log("Added to cart section")
-}
+

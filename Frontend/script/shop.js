@@ -1,10 +1,44 @@
 let baseurl="https://powerful-erin-jewelry.cyclic.app"
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // -----------------------big display search bar---------------------------------- 
+    const search=document.getElementById("input");
+    const search_bar=document.getElementById("search-bar");
 
-// let cartTotal=document.getElementById("cart-length");
-// cartTotal.innerText=""
-// cartTotal.innerText=`${localStorage.getItem("cart-length")||0}`;
+    // -----------------------small display search bar---------------------------------- 
+    const mobile_search=document.querySelector(".search");
 
-// let size=""
+    // -------------------search by enter key press----------------------------
+    search.addEventListener("keypress",(e)=>{
+        if(e.key=="Enter"){
+            let value=document.getElementById("input").value;
+            searchProduct(value)
+        }
+    })
+    search_bar.addEventListener("click",(e)=>{
+            let value=document.getElementById("input").value;
+            searchProduct(value)
+    })
+    // -------------------search by clicking on search bar----------------------------
+
+    search_bar.addEventListener("click",(e)=>{
+            let value=document.getElementById("input").value;
+            searchProduct(value)
+    })
+    
+    // -------------------search by enter key press----------------------------
+    document.getElementById("mobile-input").addEventListener("keypress",(e)=>{
+        if(e.key=="Enter"){
+            let value=document.getElementById("mobile-input").value;
+            searchProduct(value)
+        }
+    })
+    mobile_search.addEventListener("click",(e)=>{
+            let value=document.getElementById("mobile-input").value;
+            searchProduct(value)
+    })
+
+})
 function sortFilter() {
     let select = document.getElementById('filter');
     let option = select.options[select.selectedIndex];
@@ -16,19 +50,15 @@ function sortFilter() {
     }else if(sortValue==="top"){
         ratingFetch(sortValue)
     }
-    console.log(sortValue)
 }
 
 
-async function searchProduct() {
+async function searchProduct(value) {
     try {
-        let searchItem = document.getElementById("search").value;
-        let allData_res = await fetch(`${baseurl}/products/search?title=${searchItem}`)
+        let allData_res = await fetch(`${baseurl}/products/search?title=${value}`)
         if (allData_res.ok) {
             let data = await allData_res.json();;
-            // cartItme=[...data]
             dataFuntion(data);
-            // total()
         }
     } catch (error) {
         console.log(error)
@@ -45,31 +75,15 @@ function sizeRange(checkbox) {
     })
 
     let size_range=document.querySelector('input[name="size-range"]:checked').value;
-    // console.log(size_range);
-    // query=""
     value=size_range||"tall"
-    console.log(value)
     sizeFetchProducts(value)
 }
-// function sizeRange(){
-//     let size_range=document.querySelector('input[name="size-range"]:checked').value;
-//     console.log(size_range)
-// }
-
-// let divbtn=document.querySelector(".shop-items-child-div");
-// divbtn.addEventListener("click",aclick)
-
-
-// function cartAdd(){
-//     console.log("Added to cart")
-// }
 let querry;
 let value;
 
 function price(){
     let priceVal=document.querySelector('input[name="price"]:checked').value;
    let priceData=+(priceVal)||500;
-    console.log(typeof(priceData),priceData);
     priceFetch(priceData)
 }
 
@@ -82,12 +96,10 @@ try {
         if(res.ok){
             let data=await res.json();
             dataFuntion(data)
-            // console.log(data)
         }
     
 } catch (error) {
     console.log(error)
-    // alert("Fetching problem")
 }
 }
 async function priceFetch(priceData){
@@ -96,12 +108,10 @@ try {
         if(res.ok){
             let data=await res.json();
             dataFuntion(data)
-            // console.log(data)
         }
     
 } catch (error) {
     console.log(error)
-    // alert("Fetching problem")
 }
 }
 async function sizeFetchProducts(value){
@@ -110,12 +120,10 @@ try {
         if(res.ok){
             let data=await res.json();
             dataFuntion(data)
-            // console.log(data)
         }
     
 } catch (error) {
     console.log(error)
-    // alert("Fetching problem")
 }
 }
 async function fetchProducts(){
@@ -124,12 +132,10 @@ try {
         if(res.ok){
             let data=await res.json();
             dataFuntion(data)
-            console.log(data)
         }
     
 } catch (error) {
     console.log(error)
-    // alert("Fetching problem")
 }
 }
 fetchProducts()
@@ -147,7 +153,6 @@ function dataFuntion(data){
             
         </div>
         <figcaption>
-            <span>Brand Heading</span>
             <h4>${item.title}</h4>
             <div>
                 <h3>&#8377;${item.price}</h3>
@@ -161,14 +166,10 @@ function dataFuntion(data){
     dataContainer.innerHTML=allData.join(" ")
     let click = document.querySelectorAll(".shop-items-child-div");
       for(let btn of click){
-        // console.log(btn)
           btn.addEventListener("click",(event)=>{ 
 			let data_id = event.target.dataset.id;
-			// console.log(data_id,typeof data_id);
-            // console.log(data_id)
             localStorage.setItem("product-id",data_id)
-            window.location.href="product.html"
-			// DeleteBtn(data_id);
+            window.location.href="product_view.html"
 		});
       }
 }

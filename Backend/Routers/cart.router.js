@@ -1,79 +1,170 @@
 const express=require("express");
-const {cartDataModel}=require("../Models/cart.model");
-const {cartAuthenticate}=require("../Middelwares/cart.authentication.middelwres");
+const {UserModel}=require("../Models/users.model")
+const { ProductModel } = require("../Models/products.model");
+const {authentication}=require("../Middelwares/authentication.middeleware");
+const {AdminAuth, UserAuth}=require("../Middelwares/auth.middleware")
 
 // const app=express();
 const CartRouter=express.Router();
-CartRouter.use(cartAuthenticate)
+// CartRouter.use(cartAuthenticate)
 
-CartRouter.get("/", async(req,res)=>{
-    const query=req.query;
-    try {
-        // if(req.query.)
-        const userId=req.body.userId;
-        console.log(userId)
-        console.log(query)
-        const product= await cartDataModel.find({userId:userId});
-        // const product= await cartDataModel.find({title:{'$regex' : title, '$options' : 'i'}});
-        res.send(product)
-    } catch (error) {
-        res.send({"get_msg":error})
-    }
-})
 
-CartRouter.post("/create",async (req,res)=>{
-    const payload= req.body;
-    // const post_id=req.body.adminId;
-    try {
-        const product= new cartDataModel(payload);
-        await  product.save();
-        res.send(payload)
-        
-    } catch (error) {
-        console.log(error)
-        res.send({"post_msg":error})
-        
+
+CartRouter.get("/", authentication, UserAuth, async (req, res) => {
+  const { token } = req.body;
+  const userId = token.id;
+  try {
+    const user = await UserModel.findOne({ _id: userId });
+    const cart = user.carts;
+    res.send(cart);
+  } catch (error) {
+    return res.status(501).send({ message: error.message })
+  }
+});
+
+CartRouter.get("/:id", authentication, UserAuth, async (req, res) => {
+  const { token } = req.body;
+  const productId = req.params["id"];
+  const userId = token.id;
+  try {
+    const user = await UserModel.findOne({ _id: userId });
+    if (!user) {
+      return res.status(401).send({ message: "Login to continue" });
     }
-})
-CartRouter.patch("/update/:id",async (req,res)=>{
-    const payload= req.body;
-    const id=req.params.id;
-    const data= await cartDataModel.findOne({_id:id});
-    const user_id=data.userId;
-    const user_req_id=req.body.userId;
+    const cart = user.cart;
+    if (cart.some((index) => index.productId == productId)) {
+      return res.send({ message: "Product already in cart" });
+    }
+    res.status(409).send({ message: "Product is not in cart" });
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
+
+CartRouter.post("/add",  authentication, UserAuth, async (req, res) => {
+  const { token } = req.body;
+  const {productId,adminId,quantity,size} = req.body;
+  const userId = token.id;
+  const user = await UserModel.findOne({ _id: userId });
+  if (!user) {
+    return res.status(401).send({ message: "Access Denied" });
+  }
+  const product = await ProductModel.findOne({ _id: productId });
+  const cart = user.carts;
+  if (cart.some((index) => index.productId == productId)) {
+    return res.status(409).send({ message: "Product already in cart" });
+  } else {
     try {
-        if(user_req_id!=user_id){
-            res.send("You are not authorized")
-        }else{
-            await cartDataModel.findByIdAndUpdate({_id:id},payload);
-            res.send(`Product is updated of ${id}`)
+      await UserModel.findOneAndUpdate(
+        { _id: userId },
+        {
+          $push: {
+            carts: {
+              productId,
+              adminId,
+              quantity,
+              size
+            },
+          },
         }
+      );
+      res.send({ message: "Product added to cart" });
     } catch (error) {
-        res.send({"post_msg":error})
-        
+      return res.status(501).send({ message: error.message });
     }
-})
-CartRouter.delete("/delete/:id",async (req,res)=>{
-    const id=req.params.id;
-    const data= await cartDataModel.findOne({_id:id});
-    const user_id=data.userId;
-    const user_req_id=req.body.userId;
-    try {
-        if(user_req_id!=user_id){
-            res.send("You are not authorized")
-        }else{
-           await cartDataModel.findByIdAndDelete({_id:id});
-            res.send(`Product is delete of ${id}`)
-        }
-    } catch (error) {
-        res.send({"post_msg":error})
-        
-    }
-})
+  }
+});
 
-module.exports={
-    CartRouter
+CartRouter.delete("/remove/:id", authentication, UserAuth,  async (req, res) => {
+  const { token } = req.body;
+  const productId = req.params["id"];
+  const userId = token.id;
+  const user = await UserModel.findOne({ _id: userId });
+  if (!user) {
+    return res.status(401).send({ message: "Access Denied" });
+  }
+  const cart = user.carts;
+  if (cart.some((index) => index.productId == productId)) {
+    try {
+      await UserModel.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: { carts: { productId } },
+        }
+      );
+      res.send({ message: `Product with id ${productId} removed from cart` });
+    } catch (error) {
+      return res.status(501).send({ message: error.message });
+    }
+  } else {
+    return res.status(404).send({ message: "Product not found in cart" });
+  }
 }
+);
+
+CartRouter.patch("/increase/:id", authentication, UserAuth, async (req, res) => {
+  const { token } = req.body;
+  const productId = req.params["id"];
+  const userId = token.id;
+  const user = await UserModel.findOne({ _id: userId });
+  if (!user) {
+    return res.status(401).send({ message: "Access Denied" });
+  }
+  const product = await ProductModel.findOne({ _id: productId });
+  const price = product.price;
+  const cart = user.carts;
+  if (cart.some((index) => index.productId == productId)) {
+    cart.forEach((index) => {
+      if (index.productId == productId) {
+        index.quantity++;
+        index.price = index.price + price - price * product.discount;
+      }
+    });
+    await user.save();
+    res.send({ message: `Qantity increased of id ${productId}` });
+  } else {
+    return res.status(404).send({ message: "Product not found in cart" });
+  }
+}
+);
+
+CartRouter.patch("/decrease/:id", authentication, UserAuth,   async (req, res) => {
+  const { token } = req.body;
+  const productId = req.params["id"];
+  const userId = token.id;
+  const user = await UserModel.findOne({ _id: userId });
+  if (!user) {
+    return res.status(401).send({ message: "Access Denied" });
+  }
+  const product = await ProductModel.findOne({ _id: productId });
+  const price = product.price;
+  const cart = user.carts;
+  if (cart.some((index) => index.productId == productId)) {
+    let flag = false;
+    cart.forEach((index) => {
+      if (index.productId == productId) {
+        if (index.quantity == 1) {
+          flag = true;
+        } else {
+          index.quantity--;
+          index.price = index.price - price - price * product.discount;
+        }
+      }
+    });
+    if (flag) {
+      return res.status(409).send({ message: "Conflict in request" });
+    }
+    await user.save();
+    res.send({ message: `Qantity decreased of id ${productId}` });
+  } else {
+    return res.status(404).send({ message: "Product not found in cart" });
+  }
+}
+);
+
+module.exports = {
+  CartRouter,
+};
 
 // {
 //     "img-1":"https://columbia.scene7.com/is/image/ColumbiaSportswear2/1931171_021_f?wid=768&hei=806&v=1669837969",

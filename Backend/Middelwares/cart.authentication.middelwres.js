@@ -13,13 +13,13 @@ const cartAuthenticate= (req,res,next)=>{
                 req.body.userId=userId;
                 next()
             }else{
-                res.send("wrong credentials")
+                res.status(400).send({msg:"Access Denied"})
             }
         } catch (error) {
-            res.send("wrong credentials")
+            res.status(404).send({msg:error})
         }
     }else{
-        res.send("wrong credentials")
+        res.status(400).send({msg:"Access Denied"})
     }
 }
 

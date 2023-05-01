@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const Big_screen_sreachbar=document.getElementById("search_bar");
+    const small_screen_sreachbar=document.querySelector(".input-box");
+    Big_screen_sreachbar.style.display="none"
+    small_screen_sreachbar.style.display="none"
+})
 let baseURL="https://powerful-erin-jewelry.cyclic.app"
 let container = document.getElementById('container')
 
@@ -20,8 +27,11 @@ async function signUpFun() {
 	// let gender = document.querySelector('input[name="gender"]:checked').value;
 	let password = document.getElementById("password").value;
 	let confirmPassword = document.getElementById("confirmpassword").value;
+	if(phoneno.length!=10){
+		return Swal.fire("Phone Number Should Be 10 Digits")
+	}
 	if(password!=confirmPassword){
-		alert("Give Correct Password")
+		return Swal.fire("Give Correct Password")
 	}else{
 		let obj = {
 			name: name,
@@ -40,13 +50,24 @@ async function signUpFun() {
 				},
 				body:JSON.stringify(obj)
 			  })
+			  if(signup_res.status==400){
+				return await Swal.fire({
+					position: 'middle',
+					icon: 'error',
+					title: 'You Are Already Registered',
+					showConfirmButton: false,
+					timer: 1500
+				  })
+			  }
 			  if(signup_res.ok){
-				  let massage= await signup_res.json()
-				console.log(massage.msg)
-				alert(`${massage.msg}`)
+				return await Swal.fire(
+					'Signup Successful',
+					'You are now Registered',
+					'success'
+				  )
 			  }
 		} catch (error) {
-			alert("Something went wrong")
+			Swal.fire("We are facing some server problem. Try again later")
 		}
 	}
 	
@@ -61,7 +82,6 @@ async function signin(){
 		email,
 		password
 	  }
-	  console.log(obj)
 	  let login_request= await fetch(`${baseURL}/users/login`,{
 		method:"POST",
 		headers:{
@@ -69,18 +89,38 @@ async function signin(){
 		},
 		body:JSON.stringify(obj)
 	  })
+	  if(login_request.status===400){
+		let response= await login_request.json()
+		return  await Swal.fire({
+			position: 'middle',
+			icon: 'error',
+			title: `${response.msg}`,
+			showConfirmButton: false,
+			timer: 1500
+		  })
+	  }
 	  if(login_request.ok){
 		let token =await login_request.json();
 		localStorage.setItem("token",token.token)
-		console.log(token.token)
-		alert(`${token.msg}`)
+		await  Swal.fire(
+			"Welcome to Avira",
+			"Lets Explore, Redirecting to Home page....",
+			"success"
+		  );
+		//   return await Swal.fire({
+		// 	position: 'middle',
+		// 	icon: 'error',
+		// 	title: 'You Are Already Registered',
+		// 	showConfirmButton: false,
+		// 	timer: 1500
+		//   })
 		window.location.href = "index.html";
   
 	  }
-	  else{
-		alert("User not found.");
+	//   else{
+	// 	alert("User not found.");
   
-	  }
+	//   }
 	} catch (error) {
 	  alert("wrong username or password. Please try again later.");
 	  console.log(error)

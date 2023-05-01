@@ -67,7 +67,15 @@ text-decoration: underline;
 }
 .shoping-cart-middle-left-div{
     width: 65%;
+
 }
+#shopping-left-div{
+    height: 100vh;
+    overflow-y:auto ;
+    
+    
+}
+
 .shoping-cart-middle-left-heading-child-div{
     display: flex;
     justify-content: space-between;

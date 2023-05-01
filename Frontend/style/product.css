@@ -229,8 +229,10 @@ button .fa{
 .wraper{
     flex-direction: column;
     height: auto;
-    padding: 5% 0;
-    margin-left: 5%;
+    padding: 0% 0;
+    margin-left: 0%;
+    width: 90%;
+    margin: auto;
 
 }
 .text{
