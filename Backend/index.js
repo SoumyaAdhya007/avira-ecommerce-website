@@ -4,6 +4,7 @@ const {ProductRouter}=require("./Routers/product.router")
 const {UserRouter}=require("./Routers/user.router")
 const {Adminrouter}=require("./Routers/admin.router")
 const {CartRouter}=require("./Routers/cart.router")
+const {ordersRouter}=require("./Routers/orders.router")
 const {connection}=require("./config/db");
 const cors = require('cors')
 const app=express();
@@ -12,8 +13,9 @@ app.use(express.json());
 app.use("/users",UserRouter)
 app.use("/admins",Adminrouter)
 // app.use(authenticate)
-app.use("/carts",CartRouter)
 app.use("/products",ProductRouter)
+app.use("/carts",CartRouter)
+app.use("/orders",ordersRouter)
 
 app.listen(process.env.port, async ()=>{
     try {

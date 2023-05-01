@@ -1,12 +1,11 @@
 const mongoose=require("mongoose");
 
 const adminSchema=mongoose.Schema({
-    name:String,
-    email:String,
-    password:String,
-    zipcode:Number,
-    phoneNo:Number,
-    gender:String
+    name:{type: String, required: true},
+    email:{type: String, required: true},
+    password:{type: String, required: true},
+    zipcode:{type: Number, required: true},
+    phoneNo:{type: Number, required: true},
 })
 
 const AdminModel=mongoose.model("admin",adminSchema);

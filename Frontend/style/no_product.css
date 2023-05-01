@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#no-product{
+    margin: auto;
+    width: 50%;
+    height: 50vh
+}
+#no-product img{
+    margin: auto;
+    /* text-align: center; */
+    width: 100%;
+    height: 100%;
+    /* align-items: center; */
+    /* align-content: center; */
+}
+ul{
+    text-align: center;
+    /* margin-top: 30px; */
+    font-size: 20px;
+}
+ul b{
+    color: #ea4636;
+}
+li{
+    font-weight: 600;
+}
+@media (max-width:550px){
+    #no-product{
+        margin: auto;
+        width: 70%;
+        height: 40vh
+    }
+}
+@media (max-width:550px){
+    #no-product{
+        margin: auto;
+        width: 95%;
+        height: 40vh
+    }
+}

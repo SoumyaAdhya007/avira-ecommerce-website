@@ -248,6 +248,7 @@ footer p {
 #jacket-btn-div>div{
     width: 29%;
     margin: auto;
+    text-align: center;
 }
 #jacket-btn-div button{
    margin-top: 20px;
@@ -469,22 +470,30 @@ left:30px;
     margin: auto;
     margin-top: 70px;
 }
+
 .play-child-div{
     width: 100%;
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    /* grid-template-columns: repeat(4,1fr);
-    gap: 20px; */
+    overflow-x: auto;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
 }
+.play-child-div::-webkit-scrollbar{
+    width: o;
+    }
+    .play-child-div>div{
+        min-width: 200px;
+    }
 .fishing{
-    width: 23%;
+    /* width: 23%; */
     height: 230px;
 
     background: url(../img/fising-img.jpg);
     background-size: 100% 100%;
 }
 .hiking{
-    width: 23%;
+    /* width: 23%; */
 
     height: 230px;
 
@@ -492,7 +501,7 @@ left:30px;
     background-size: 100% 100%;
 }
 .hunting{
-    width: 23%;
+    /* width: 23%; */
 
     height: 230px;
 
@@ -500,7 +509,7 @@ left:30px;
     background-size: 100% 100%;
 }
 .ski-snow{
-    width: 23%;
+    /* width: 23%; */
 
     height: 230px;
 
@@ -524,7 +533,7 @@ left:30px;
 #motivate-cort-div>h1{
     text-align: center;
    font-family: "gert bold", sans-serif;
-   font-size: 50px;
+   font-size: 2rem;
    font-weight: 700;
    color: #0085ca;
    line-height: 48px;
@@ -562,6 +571,28 @@ left:30px;
         padding-left: 100px;
     }
 }
+@media (max-width:500px){
+    #snow-shop{
+        height: auto;
+        background: url(../img/snow-shop-mobile-img.jpg);
+    }
+    #snow-shop-btn {
+        width: 100%;
+        padding-top: 90%;
+        padding-left: 10%;
+        padding-bottom: 30px;
+
+    }
+    #jacket-btn-div>div{
+        width: 100%;
+    }
+    .jacket-div {
+        height: 350px;
+    }
+    .feat-img-II-child-div{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
 @media (max-width:1450px){
     .get-rewards-div-btn{
         width: 40%;
@@ -575,11 +606,11 @@ left:30px;
         width: 60%;
     }
 }
-@media (max-width:1070px){
+/* @media (max-width:1070px){
     #jacket-btn-div>div{
         width: 40%;
     }
-}
+} */
 @media (max-width:775px){
     #jacket-btn-div{
         width: 60%;
